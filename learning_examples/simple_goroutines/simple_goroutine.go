@@ -1,7 +1,8 @@
-package simple_goroutine
+package simple_goroutines
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -27,9 +28,24 @@ func outputRandomNumbersFiveTimes() {
 	time.Sleep(time.Second * 2)
 }
 
+func outputOneByOne() {
+	runtime.GOMAXPROCS(1)
+
+	for i := 0; i < 10; i++ {
+		go func() {
+			fmt.Println(i)
+		}()
+	}
+
+	runtime.Gosched()
+
+	time.Sleep(time.Second)
+}
+
 func main() {
 	outputFiveByFiveTimes()
 
 	outputRandomNumbersFiveTimes()
 
+	outputOneByOne()
 }

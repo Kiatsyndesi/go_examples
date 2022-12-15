@@ -1,4 +1,4 @@
-package simple_goroutine
+package simple_goroutines
 
 func consumer(ch <-chan string) {
 	//Receiving from channel

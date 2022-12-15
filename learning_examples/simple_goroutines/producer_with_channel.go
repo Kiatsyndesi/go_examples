@@ -1,4 +1,4 @@
-package simple_goroutine
+package simple_goroutines
 
 import "fmt"
 
