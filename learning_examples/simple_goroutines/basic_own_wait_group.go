@@ -12,6 +12,12 @@ func InitWait(count int) *Wait {
 }
 
 func (w *Wait) Done() {
+	defer func() {
+		if e := recover(); e != nil {
+			fmt.Printf("Something went wrong with done from wg: %v", e)
+		}
+	}()
+
 	w.ch <- 1
 }
 
