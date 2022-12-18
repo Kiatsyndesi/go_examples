@@ -1,2 +1,2 @@
 # go_examples
-Repo for my solutions
+Repo for my solutions and learning examples
