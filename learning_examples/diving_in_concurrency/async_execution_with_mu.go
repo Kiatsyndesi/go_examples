@@ -7,14 +7,15 @@ import (
 )
 
 func main() {
-	cs := map[string]int{"Касса #1": 0, "Касса #2": 0}
+	cs := map[string]int{"Cash #1": 0, "Cash #2": 0}
 	mu := &sync.Mutex{}
 
 	for buyer := 0; buyer < 1000; buyer++ {
 		go func(buyer int) {
 			mu.Lock()
+			//can be without defer, but on this way we should move unlock to end
 			defer mu.Unlock()
-			cs["Касса #1"] += 1
+			cs["Cash #1"] += 1
 			fmt.Println(cs)
 		}(buyer)
 	}
@@ -23,7 +24,7 @@ func main() {
 		go func(buyer int) {
 			mu.Lock()
 			defer mu.Unlock()
-			cs["Касса #2"] += 1
+			cs["Cash #2"] += 1
 			fmt.Println(cs)
 		}(buyer)
 	}
