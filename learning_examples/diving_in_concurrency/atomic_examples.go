@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	//first example with addint32
+	//marshalling example with addint32
 	value1 := int32(0)
 	atomic.AddInt32(&value1, 1)
 	fmt.Println(value1)
