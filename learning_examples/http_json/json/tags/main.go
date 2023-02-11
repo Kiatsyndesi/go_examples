@@ -22,7 +22,7 @@ func main() {
 	in := exampleStruct{
 		FirstField:    1,
 		SecondField:   2,
-		ThirdField:    3,
+		ThirdField:    0,
 		FourthField:   4,
 		FifthField:    5,
 		SixthField:    6,
