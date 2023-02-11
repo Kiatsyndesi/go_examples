@@ -11,6 +11,7 @@ type structWithPrivateField struct {
 	privateField string
 }
 
+// MarshalJSON redeclare marshal method
 func (s *structWithPrivateField) MarshalJSON() ([]byte, error) {
 	const prefix, suffix = `{"privateField": "`, `"}`
 
@@ -28,9 +29,9 @@ func main() {
 	//for checking contract of our structure. Analog of "instance of". Optional line of code
 	var _ json.Marshaler = (*structWithPrivateField)(nil)
 
-	data := structWithPrivateField{privateField: "hello gopher"}
+	data := &structWithPrivateField{privateField: "hello gopher"}
 
-	jsonBytes, err := data.MarshalJSON()
+	jsonBytes, err := json.Marshal(data)
 
 	if err != nil {
 		log.Fatal(err)
